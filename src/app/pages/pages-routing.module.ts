@@ -5,6 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { RegisterpageComponent } from './auth/registerpage/registerpage.component';
 import { LandingpageComponent } from './auth/landingpage/landingpage.component';
 import { ProfilepageComponent } from './auth/profilepage/profilepage.component';
+import { LoginpageComponent } from './auth/loginpage/loginpage.component';
 
 const routes: Routes = [
     {
@@ -15,6 +16,7 @@ const routes: Routes = [
             { path: "home", component: IndexComponent },
             { path: "profile", component: ProfilepageComponent },
             { path: "register", component: RegisterpageComponent },
+            { path: "login", component: LoginpageComponent },
             { path: "landing", component: LandingpageComponent }
         ]
     }

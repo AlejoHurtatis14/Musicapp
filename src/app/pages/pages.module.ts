@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
@@ -23,6 +23,7 @@ import { RegisterpageComponent } from './auth/registerpage/registerpage.componen
 import { LandingpageComponent } from './auth/landingpage/landingpage.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 
 @NgModule({
   imports: [
@@ -42,6 +43,8 @@ import { PagesRoutingModule } from './pages-routing.module';
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     PagesRoutingModule,
+    ReactiveFormsModule,
+    RxReactiveFormsModule,
   ],
   declarations: [
     IndexComponent,
@@ -58,4 +61,4 @@ import { PagesRoutingModule } from './pages-routing.module';
   ],
   providers: []
 })
-export class PagesModule {}
+export class PagesModule { }
