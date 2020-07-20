@@ -15,8 +15,8 @@ export const environment = {
     measurementId: "G-JGR5HV6SW8",
   },
   apiKeyMusiMatch: "24cfbf9043e212897e8f2927daecb7f0",
-  complementoMusixMatch: "/ws/1.1/",
-  complementoApiGoogle: "/signin/",
+  musixMatch: "/ws/1.1/",
+  apiGoogle: "/signin/",
 };
 
 /*

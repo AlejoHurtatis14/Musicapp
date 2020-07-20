@@ -10,10 +10,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterpageComponent implements OnInit, OnDestroy {
 
-  constructor(private formBuilder: RxFormBuilder, private http: HttpClient) { }
+  constructor(
+    private formBuilder: RxFormBuilder,
+    private http: HttpClient,
+    private registerService: RegisterService
+  ) { }
 
   formRegister: RxFormGroup;
-  registerService: RegisterService = new RegisterService();
   isCollapsed = true;
   focus;
   focus1;
@@ -56,8 +59,8 @@ export class RegisterpageComponent implements OnInit, OnDestroy {
       console.log("formulario ", this.formRegister.value);
     } else {
       this.formRegister.markAsTouched();
-      const url = environment.complementoMusixMatch + 'track.search?q_artist=justin bieber&page_size=3&page=1&s_track_rating=desc&apikey=24cfbf9043e212897e8f2927daecb7f0';
-      const google = environment.complementoApiGoogle + 'oauth?client_id=719003813794-s9932lepg5rl10q1t3ouevb5doiaublb.apps.googleusercontent.com&redirect_uri=http://localhost:4200&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email';
+      const url = environment.musixMatch + 'track.search?q_artist=justin bieber&page_size=3&page=1&s_track_rating=desc&apikey=24cfbf9043e212897e8f2927daecb7f0';
+      const google = environment.apiGoogle + 'oauth?client_id=719003813794-s9932lepg5rl10q1t3ouevb5doiaublb.apps.googleusercontent.com&redirect_uri=http://localhost:4200&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email';
       // const httpOptions = {
       //   headers: new HttpHeaders({
       //     'Access-Control-Origin': '*',

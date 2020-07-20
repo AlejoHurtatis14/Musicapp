@@ -8,6 +8,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { PagesModule } from "./pages/pages.module";
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { BrowserModule } from '@angular/platform-browser';
     RouterModule,
     AppRoutingModule,
     PagesModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

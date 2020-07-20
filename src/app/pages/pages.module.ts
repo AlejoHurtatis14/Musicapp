@@ -24,6 +24,7 @@ import { LandingpageComponent } from './auth/landingpage/landingpage.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     PagesRoutingModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
+    AngularFireAuthModule,
   ],
   declarations: [
     IndexComponent,
