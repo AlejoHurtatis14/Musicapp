@@ -5,7 +5,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
   selector: "app-loginpage",
-  templateUrl: "loginpage.component.html"
+  templateUrl: "loginpage.component.html",
+  styleUrls: ["loginpage.component.scss"]
 })
 export class LoginpageComponent implements OnInit, OnDestroy {
 
@@ -55,7 +56,6 @@ export class LoginpageComponent implements OnInit, OnDestroy {
         console.log("Respuesta ", resp);
       }, error => {
         console.log("Error ", error);
-        
       });
     } else {
       this.loginService.signIn(this.formLogin.value).then(resp => {
