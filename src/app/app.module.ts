@@ -11,6 +11,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AppRoutingModule,
     PagesModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    SimpleNotificationsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

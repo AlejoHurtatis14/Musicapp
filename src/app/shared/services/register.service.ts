@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import { Perform } from '../Functions/functions-generals';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class RegisterService {
 
   constructor(
     private dataBase: AngularFirestore,
-    private fireAuth: AngularFireAuth,
+    public fireAuth: AngularFireAuth,
   ) { }
 
   private _nombre: string;
@@ -55,7 +56,7 @@ export class RegisterService {
   }
 
   @prop()
-  @required()
+  @required({ message: 'Este campo es requerido' })
   @minLength({ value: 5 })
   @password({
     validation: { digit: true, specialCharacter: true, lowerCase: true, upperCase: true }
@@ -75,10 +76,41 @@ export class RegisterService {
   }
 
   //Type es el complemento del provider para inicar
-  signUp(type) {
+  async signUp(type?): Promise<any> {
+    let user;
     if (type) {
-      this.fireAuth.signInWithPopup(new firebase.auth[type + 'AuthProvider']())
+      await this.fireAuth.signInWithPopup(new firebase.auth[type + 'AuthProvider']()).then(usuario => {
+        if (usuario.user) {
+          this.sendEmailVerifyUser();
+          localStorage.setItem('id', usuario.user.uid);
+          localStorage.setItem('token', '');
+          user = usuario;
+        }
+      }, error => {
+        console.log("Error ", error);
+      });
+    } else {
+      await this.fireAuth.createUserWithEmailAndPassword(this.email, this.password).then(usuario => {
+        if (usuario.user) {
+          this.sendEmailVerifyUser();
+          localStorage.setItem('id', usuario.user.uid);
+          localStorage.setItem('token', '');
+          user = usuario;
+        }
+      }, error => {
+        Perform.execute().createNotification('No fue posible registrarse.', error.message, 'error');
+      });
     }
+    return user;
+  }
+
+  sendEmailVerifyUser() {
+    return this.fireAuth.currentUser.then(u => {
+      u.sendEmailVerification()
+    }).then(() => {
+    }, error => {
+      console.log("Error ", error);
+    })
   }
 
 }

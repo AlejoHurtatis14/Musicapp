@@ -20,6 +20,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { RegisterpageComponent } from './registerpage/registerpage.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { RegisterpageComponent } from './registerpage/registerpage.component';
     ReactiveFormsModule,
     RxReactiveFormsModule,
     AngularFireAuthModule,
+    SimpleNotificationsModule.forRoot(),
   ],
   declarations: [
     LoginpageComponent,

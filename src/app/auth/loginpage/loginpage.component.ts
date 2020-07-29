@@ -11,13 +11,12 @@ import { LoginService } from 'src/app/shared/services/login.service';
 export class LoginpageComponent implements OnInit, OnDestroy {
 
   formLogin: RxFormGroup;
-  isCollapsed = true;
-  
+
   constructor(
     private formBuilder: RxFormBuilder,
     private loginService: LoginService
-    ) { }
-    
+  ) { }
+
   @HostListener("document:mousemove", ["$event"])
 
   ngOnInit() {
@@ -51,18 +50,22 @@ export class LoginpageComponent implements OnInit, OnDestroy {
     // }, error => {
     //   console.log("Error ", error);
     // });
-    if (type) {
-      this.loginService.signIn(this.formLogin.value, type).then(resp => {
-        console.log("Respuesta ", resp);
-      }, error => {
-        console.log("Error ", error);
-      });
-    } else {
+    this.loginService.signIn(this.formLogin.value, type).then(resp => {
+      console.log("Respuesta ", resp);
+    }, error => {
+      console.log("Error ", error);
+    });
+  }
+
+  executeLogin() {
+    if (this.formLogin.valid) {
       this.loginService.signIn(this.formLogin.value).then(resp => {
         console.log("Respuesta ", resp);
       }, error => {
         console.log("Error ", error);
       });
+    } else {
+      this.formLogin.markAsTouched();
     }
   }
 
